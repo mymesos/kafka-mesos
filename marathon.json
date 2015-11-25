@@ -1,0 +1,27 @@
+{
+  "id": "kafka-mesos",
+  "instances": 1,
+  "cpus": 0.5,
+  "mem": 512.0,
+  "ports": [
+    31000
+  ],
+  "requirePorts": true,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "mymesos/kafka-mesos:latest",
+      "forcePullImage": true,
+      "network": "HOST"
+    }
+  },
+  "env": {
+    "MASTER": "zk://localhost:2181/mesos",
+    "ZK": "localhost:2181"
+  },
+  "healthChecks": [
+    {
+      "protocol": "TCP"
+    }
+  ]
+}
